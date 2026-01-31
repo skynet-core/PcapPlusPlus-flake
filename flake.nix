@@ -47,6 +47,10 @@
             "-DBUILD_SHARED_LIBS=ON"
             "-DLIGHT_PCAPNG_ZSTD=ON"
           ];
+          outputs = [
+            "out"
+            "dev"
+          ];
           __structuredAttrs = true;
         };
       }
