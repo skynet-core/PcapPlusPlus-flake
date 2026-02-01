@@ -38,7 +38,7 @@
           inherit buildInputs;
           src = PcapPlusPlus;
           nativeBuildInputs = commonNativePackages ++ [ ];
-          NIX_CFLAGS_COMPILE = "-O2 -pipe";
+          NIX_CFLAGS_COMPILE = "-march=native -pipe";
           cmakeFlags = [
             "-DPCAPPP_BUILD_PCAPPP=ON"
             "-DPCAPPP_BUILD_EXAMPLES=OFF"
@@ -47,6 +47,8 @@
             "-DBUILD_SHARED_LIBS=ON"
             "-DLIGHT_PCAPNG_ZSTD=ON"
             "-DCMAKE_INSTALL_INCLUDEDIR=include"
+            "-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON"
+            "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
           ];
           outputs = [
             "out"
