@@ -31,7 +31,7 @@
           zstd
         ];
       in
-      {
+      rec {
         packages.default = pkgs.stdenv.mkDerivation {
           pname = "PcapPlusPlus";
           version = "v25.05";
@@ -46,6 +46,7 @@
             "-DPCAPPP_INSTALL=ON"
             "-DBUILD_SHARED_LIBS=ON"
             "-DLIGHT_PCAPNG_ZSTD=ON"
+            "-DCMAKE_INSTALL_INCLUDEDIR=include"
           ];
           outputs = [
             "out"
@@ -53,6 +54,8 @@
           ];
           __structuredAttrs = true;
         };
+        packages.PcapPlusPlus = packages.default;
+        packages.PcapPlusPlus-dev = packages.default.dev;
       }
     );
 }
